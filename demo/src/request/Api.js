@@ -1,4 +1,6 @@
 import http from './request.js'
 
-export const querySignin = (a) => http.post('index/login',a)
-export default querySignin
+export const querySignin = (a) => http.post('lejuAdmin/index/login', a)
+
+
+export const queryInitMenus = () => http.get('admin/sysAuth/index/getInitMenus')

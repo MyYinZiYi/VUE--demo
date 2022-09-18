@@ -32,21 +32,22 @@ export default {
   name: "HomeView",
   data() {
     return {
-      username: "",
-      password: "",
+      username: "admin",
+      password: "123456",
     };
   },
   methods: {
     // 登录
     Signin() {
-      querySignin({ username: this.username, password: this.password }).then(
-        (res) => {
+      querySignin({ username: this.username, password: this.password }).then((res) => {
+        console.log(res,'ssss');
           // console.log(res);
           if (this.username == "" && this.password == "") {
             alert("账户或密码不能为空");
             return false;
           }
           if (res.data.userInfo.username == this.username) {
+            sessionStorage.setItem("token", res.data.token);
             this.$router.push("/about");
           }
         }

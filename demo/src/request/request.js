@@ -1,11 +1,11 @@
 import axios from "axios";
 
 const http = axios.create({
-    baseURL: "http://leju.bufan.cloud/lejuAdmin/",
+    baseURL: "http://leju.bufan.cloud/",
     timeout: 5000
 })
 http.interceptors.request.use(config => {
-    config.headers.Authorization = window.localStorage.getItem("token")
+    config.headers.token = window.sessionStorage.getItem("token")
     return config
 }, error => {
     return Promise.reject(error)
